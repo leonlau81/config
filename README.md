@@ -53,7 +53,7 @@
 
 ### 2.生产环境分布式方案
 &emsp;&emsp;nginx高可用作负载均衡，web服务通过redis集群取号，并将映射关系（带时间戳）存储到mysql。对于过期数据可采用定时任务淘汰，定时任务可通过ElasticJob实现保证分布式和高可用。
-![prd](https://user-images.githubusercontent.com/5106556/145356066-8b6e92ea-17c9-40af-8621-e9939f2a41e8.png
+![prd](https://user-images.githubusercontent.com/5106556/145356066-8b6e92ea-17c9-40af-8621-e9939f2a41e8.png)  
 
 ### 3.极致性能方案
 &emsp;&emsp;直接引入了OpenResty（基于Nginx与Lua的高性能Web平台），由于Nginx的非阻塞IO模型，支持高并发连接，同时OpenResty可直接访问redis缓存，也可以直接连mysql，不需要再通过业务层连这些中间件，性能可进一步提升。
